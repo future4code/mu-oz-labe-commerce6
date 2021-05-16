@@ -12,7 +12,6 @@ const Cabecalho = styled.div`
     grid-template-rows: 2fr 8fr;
     align-items: center;
     justify-content:center;
-    width: 100vw;
     height: 100vh;
 
 `
@@ -32,7 +31,9 @@ function Header() {
 
 
             <img src={viajeParaOEspaco} />
+
         </Cabecalho>
+        
     )
 
 }
