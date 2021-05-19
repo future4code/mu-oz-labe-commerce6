@@ -42,17 +42,17 @@ function Footer() {
             <Contatos>
                 <h4>Contatos</h4>
                 <a href={'http://outlook.com'}><img src={email} alt={'e-mail'} /></a>
-                <a href={'http://whatsapp.com'}><img src={whats} /></a>
+                <a href={'http://whatsapp.com'}><img src={whats} alt={'whats'} /></a>
                 <p>Segunda à sexta: 05h às 21h</p>
                 <p>Sábados: 10h às 13h</p>
             </Contatos>
             <RedesSociais>
                 <h4>Siga-nos nas Redes Sociais</h4>
                 <div>
-                    <a href={'http://instagram.com'} ><img src={instagram} /></a>
-                    <a href={'http://facebook.com'} ><img src={facebook} /></a>
-                    <a href={'http://youtube.com'} ><img src={youtube} /></a>
-                    <a href={'http://linkedin.com'} ><img src={linkedin} /></a>
+                    <a href={'http://instagram.com'} ><img src={instagram}  alt={'instagram'} /></a>
+                    <a href={'http://facebook.com'} ><img src={facebook}  alt={'facebook'}/></a>
+                    <a href={'http://youtube.com'} ><img src={youtube}  alt={'youtube'}/></a>
+                    <a href={'http://linkedin.com'} ><img src={linkedin}  alt={'linkedin'} /></a>
                 </div>
 
             </RedesSociais>

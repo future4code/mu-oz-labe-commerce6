@@ -9,6 +9,7 @@ const Cabecalho = styled.div`
     background-repeat: no-repeat;
     background-size: cover;
     display:grid;
+    grid-template-columns: 1/3;
     grid-template-rows: 2fr 8fr;
     align-items: center;
     justify-content:center;
@@ -19,6 +20,7 @@ const Cabecalho = styled.div`
 const Logo = styled.img`
     justify-self: start;
     align-self: center;
+    margin-left:-3rem;
 `
 
 
@@ -30,7 +32,7 @@ function Header() {
             <Logo src={logo}></Logo>
 
 
-            <img src={viajeParaOEspaco} />
+            <img src={viajeParaOEspaco}  alt={''} />
 
         </Cabecalho>
         

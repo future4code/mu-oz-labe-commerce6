@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import Footer from './Footer.js'
 
 
-export default class ExibeCarrinhp extends React.Component {
+export default class ExibeCarrinho extends React.Component {
     render(){
         return(
             <>
