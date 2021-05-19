@@ -44,66 +44,10 @@ const CardViagem = styled.div`
 `
 
 export default class Viagens extends React.Component {
-    state = {
-        arrayViagens: [
-            {
-                id: 1,
-                nomeProduto: "Viagem ao espaço",
-                valor: 26000000.00,
-                imagem: require('../img/produtos/viagemEspaco1.svg'),
-                descricao: ""
+    
 
-            },
-            {
-                id: 2,
-                nomeProduto: "Viagem Volta à terra",
-                valor: 15000000.00,
-                imagem: require('../img/produtos/viagemVoltaTerra2.svg')
-            },
-            {
-                id: 3,
-                nomeProduto: "Viagem a Marte",
-                valor: 26000000.00,
-                imagem: require('../img/produtos/viagemMarte3.svg')
-            },
-            {
-                id: 4,
-                nomeProduto: "Viagem a Vênus",
-                valor: 26000000.00,
-                imagem: require('../img/produtos/viagemVenus4.svg')
-            },
-
-            {
-                id: 5,
-                nomeProduto: "Viagem ao Planeta Azul",
-                valor: 26000000.00,
-                imagem: require('../img/produtos/viagemPlanetaAzul5.svg')
-            },
-
-            {
-                id: 6,
-                nomeProduto: "Viagem a Saturno",
-                valor: 26000000.00,
-                imagem: require('../img/produtos/viagemSaturno6.svg')
-            },
-
-            {
-                id: 7,
-                nomeProduto: "Viagem a Plutão",
-                valor: 26000000.00,
-                imagem: require('../img/produtos/viagemPlutao7.svg')
-            },
-
-            {
-                id: 8,
-                nomeProduto: "Viagem a Lua",
-                valor: 26000000.00,
-                imagem: require('../img/produtos/viagemLua8.svg')
-            },
-        ]
-    }
-
-    mostrarViagens = this.state.arrayViagens.map((viagem, index) => {
+    mostrarViagens = this.props.arrayViagens.map((viagem, index) => {
+        
         return (
             <CardViagem key={index}>
                 <img src={viagem.imagem} alt={'Imagem do produto'}/> 
@@ -115,6 +59,7 @@ export default class Viagens extends React.Component {
     })
 
     render() {
+        console.log("Chamou")
         return (
             <>
                 {this.mostrarViagens}
