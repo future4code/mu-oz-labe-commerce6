@@ -2,7 +2,7 @@ import React from 'react';
 /* import styled from 'styled-components'; */
 import Header from '././components/Header.js';
 import Footer from './components/Footer.js';
-import ExibeProdutos from './components/ExibeProdutos';
+import ExibeProdutos from './components/ExibeProdutos.js';
 
 class App extends React.Component {
   

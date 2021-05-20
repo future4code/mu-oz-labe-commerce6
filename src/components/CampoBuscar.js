@@ -1,0 +1,78 @@
+import React from 'react';
+import styled from 'styled-components';
+// import { CardViagem } from './Viagens.js';
+
+const CardViagem = styled.div`
+    display: grid;
+    grid-template-columns: 7fr 2fr;
+    grid-template-rows:1fr;
+   
+ 
+    width: fit-content;
+    align-items:center;
+    border-top: 1px solid;
+    border-bottom: 1px solid;
+    border-left: 1px solid;
+    border-right: 1px solid;
+    padding:0;
+    img{
+        border: 1px solid white;
+        grid-column: 1/3;
+        width:20vw;
+    }
+
+    h1{
+        height:100%;
+        border-left: 1px solid white;     
+
+       
+    }
+
+    h3 {
+        text-align:center;
+    }
+
+`
+
+export default class CampoBuscar extends React.Component {
+    state = {
+        produtoBuscado: "",
+        // buscarViagens: [... this.props.arrayViagens],
+    }
+
+    arrayViagensProps = [...this.props.arrayViagens]
+
+    exibeBuscaViagens = this.arrayViagensProps.filter(viagem => {
+        // toLowerCase() coloca tudo em letra minuscula
+        if (viagem.nomeProduto.toLowerCase().includes(this.props.valorInputBusca.toLowerCase())) {
+            return (
+                <CardViagem key={viagem.id}>
+                    <img src={viagem.imagem} alt={'Imagem do produto'} />
+                    <h3>{viagem.nomeProduto}</h3>
+                    <h1> + </h1>
+                </CardViagem>
+            )
+           
+        }
+        return this.exibeBuscaViagens
+    })
+
+    render() {
+        console.log("retorna CampoBusca",this.exibeBuscaViagens)
+        return (
+            <div>
+                {this.exibeBuscaViagens}
+            </div>
+
+        )
+    }
+}
+
+
+
+
+
+
+
+
+

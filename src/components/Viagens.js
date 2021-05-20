@@ -46,10 +46,10 @@ const CardViagem = styled.div`
 export default class Viagens extends React.Component {
     
 
-    mostrarViagens = this.props.arrayViagens.map((viagem, index) => {
+    mostrarViagens = this.props.arrayViagens.map((viagem) => {
         
         return (
-            <CardViagem key={index}>
+            <CardViagem key={viagem.id}>
                 <img src={viagem.imagem} alt={'Imagem do produto'}/> 
                 <h3>{viagem.nomeProduto}</h3>
                 <h1> + </h1>
@@ -59,7 +59,6 @@ export default class Viagens extends React.Component {
     })
 
     render() {
-        console.log("Chamou")
         return (
             <>
                 {this.mostrarViagens}
