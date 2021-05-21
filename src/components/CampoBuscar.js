@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-// import { CardViagem } from './Viagens.js';
 
 const CardViagem = styled.div`
     display: grid;
@@ -31,20 +30,26 @@ const CardViagem = styled.div`
     h3 {
         text-align:center;
     }
-
 `
 
 export default class CampoBuscar extends React.Component {
-    state = {
-        produtoBuscado: "",
-        // buscarViagens: [... this.props.arrayViagens],
-    }
 
     arrayViagensProps = [...this.props.arrayViagens]
+    // arrayViagensFiltrado = this.arrayViagensProps.filter(viagem => {
+    //     // toLowerCase() coloca tudo em letra minuscula
+    //     if (viagem.nomeProduto.toLowerCase().includes(this.props.valorInputBusca.toLowerCase())) {
+    //         return viagem
+    //     }
+    // })
 
-    exibeBuscaViagens = this.arrayViagensProps.filter(viagem => {
-        // toLowerCase() coloca tudo em letra minuscula
-        if (viagem.nomeProduto.toLowerCase().includes(this.props.valorInputBusca.toLowerCase())) {
+    render() {
+       const arrayViagensFiltrado = this.arrayViagensProps.filter(viagem => {
+            // toLowerCase() coloca tudo em letra minuscula
+            if (viagem.nomeProduto.toLowerCase().includes(this.props.valorInputBusca.toLowerCase())) {
+                return viagem
+            }
+        })
+        const exibeBuscaViagens = arrayViagensFiltrado.map(viagem => {
             return (
                 <CardViagem key={viagem.id}>
                     <img src={viagem.imagem} alt={'Imagem do produto'} />
@@ -52,17 +57,12 @@ export default class CampoBuscar extends React.Component {
                     <h1> + </h1>
                 </CardViagem>
             )
-           
-        }
-        return this.exibeBuscaViagens
-    })
+        })
 
-    render() {
-        console.log("retorna CampoBusca",this.exibeBuscaViagens)
         return (
-            <div>
-                {this.exibeBuscaViagens}
-            </div>
+            <>
+                {exibeBuscaViagens}
+            </>
 
         )
     }
