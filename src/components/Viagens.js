@@ -17,7 +17,6 @@ const CardViagem = styled.div`
    
  
     width: fit-content;
-       /*   height: 43vh; */
     align-items:center;
     border-top: 1px solid;
     border-bottom: 1px solid;
@@ -27,18 +26,24 @@ const CardViagem = styled.div`
     img{
         border: 1px solid white;
         grid-column: 1/3;
-        width:20vw;
+        width:21vw;
     }
 
     h1{
         height:100%;
-        border-left: 1px solid white;     
+        border-left: 1px solid white; 
+        text-align: center;
+        align-self: center;
+        padding:0;
+        margin:0;
 
        
     }
 
     h3 {
         text-align:center;
+        padding:1rem 0;
+        margin:0;
     }
 
 `

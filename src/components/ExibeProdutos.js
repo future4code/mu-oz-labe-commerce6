@@ -4,38 +4,6 @@ import Viagens from './Viagens.js';
 import Filtro from './Filtro.js';
 import CampoBuscar from './CampoBuscar.js';
 
-const CardViagem = styled.div`
-    display: grid;
-    grid-template-columns: 7fr 2fr;
-    grid-template-rows:1fr;
-   
- 
-    width: fit-content;
-    align-items:center;
-    border-top: 1px solid;
-    border-bottom: 1px solid;
-    border-left: 1px solid;
-    border-right: 1px solid;
-    padding:0;
-    img{
-        border: 1px solid white;
-        grid-column: 1/3;
-        width:20vw;
-    }
-
-    h1{
-        height:100%;
-        border-left: 1px solid white;     
-
-       
-    }
-
-    h3 {
-        text-align:center;
-    }
-
-`
-
 const CorpoPagina = styled.div`
     display: grid;
     min-height:100vh;
@@ -127,36 +95,53 @@ export default class ExibeProdutos extends React.Component {
                 imagem: require('../img/produtos/viagemLua8.svg'),
             },
         ],
+        // alterar este state para true exibe a busca por nome
         buscando: false,
-        valorInputBusca: ""
+        // este state captura o valor do input
+        onChangeBusca: "",
+        // este state é usado no botão de busca para mudar o valor da busca
+        valorInputBusca: "",
+
     }
 
+    // esta função adiciona o valor da busca ao state onChangeBusca
     onChangeBuscarProduto = (e) => {
-        const onChangeBusca = e.target.value
-        this.setState({ valorInputBusca: onChangeBusca })
-
-        console.log(e.target.value);
+        this.setState({ onChangeBusca: e.target.value })
     }
 
-
+    // esta função atualiza os states para exibir o campo de busca
     buscarProduto = () => {
-        this.setState({ buscando: true })
+        this.setState({
+            valorInputBusca: this.state.onChangeBusca,
+            buscando: true,
+            onChangeBusca: "" 
+        })
+        console.log("botão buscar", this.state.onChangeBusca)
+    }
+
+    // essa função pega o evento (no caso as teclas clicadas) e caso a tecla seja enter ela executa a mesma função do botão
+    // a sintaxe estranha é o curto circuito, caso cês não lembrem kkk (eu não lembrava tb, fui procurar nas anotações)
+    onKeyDownBusca = (e) => {
+        e.key === "Enter" &&
+            this.buscarProduto()
+        
     }
 
 
 
     render() {
-
-
-        console.log(this.state.buscando)
         return (
             <CorpoPagina>
                 <FiltroProdutos >
                     {/* <Filtro arrayViagens={this.state.arrayViagens} /> */}
                 </FiltroProdutos>
                 <ContainerBusca>
-                    <input placeholder={'Encontre seu próximo destino'} value={this.state.produtoBuscado} onChange={this.onChangeBuscarProduto} />
-                    <button onClick={this.buscarProduto} >Buscar</button>
+                    <input placeholder={'Encontre seu próximo destino'}
+                        value={this.state.onChangeBusca}
+                        onChange={this.onChangeBuscarProduto}
+                        onKeyDown={this.onKeyDownBusca} />
+                    <button onClick={this.buscarProduto} > Buscar por nome </button>
+
                 </ContainerBusca>
                 <ContainerProdutos>
                     {
@@ -164,9 +149,6 @@ export default class ExibeProdutos extends React.Component {
                             <CampoBuscar arrayViagens={this.state.arrayViagens} valorInputBusca={this.state.valorInputBusca} /> :
                             <Viagens arrayViagens={this.state.arrayViagens} />
                     }
-
-
-
                 </ContainerProdutos>
             </CorpoPagina>
         )
