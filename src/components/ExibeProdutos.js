@@ -1,18 +1,14 @@
 import React from 'react';
+
+import lupadebuscar from '../img/lupadebuscar.svg';
+import carrinho from '../img/carrinho.svg';
 import Viagens from './Viagens.js';
 /* import Filtro from './Filtro.js'; */
 import CampoBuscar from './CampoBuscar.js';
-import lupadebuscar from '../img/lupadebuscar.svg';
-import carrinho from '../img/carrinho.svg';
 
 import { CorpoPagina, FiltroProdutos, ContainerProdutos, ContainerBusca, CarrinhoBusca, ContarProdutos, OrdernarPreço} from './styled.js';
 
-
-
-
-
 export default class ExibeProdutos extends React.Component {
-
     state = {
         // alterar este state para true exibe a busca por nome
         buscando: false,
@@ -73,11 +69,13 @@ export default class ExibeProdutos extends React.Component {
                     </ContarProdutos>
                     </CarrinhoBusca>
                     <OrdernarPreço>
+                        <div>
                         <p>Ordenação</p>
                         <select>
                             <option value={"crescente"}>Crescente</option>
                             <option value={"decrescente"}>Decrescente</option>
                         </select>
+                        </div>
                     </OrdernarPreço>
 
                 </ContainerBusca>
