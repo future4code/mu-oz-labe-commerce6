@@ -3,6 +3,8 @@ import styled from 'styled-components';
 import Viagens from './Viagens.js';
 import Filtro from './Filtro.js';
 import CampoBuscar from './CampoBuscar.js';
+import lupadebuscar from '../img/lupadebuscar.svg';
+import carrinho from '../img/carrinho.svg';
 
 const CorpoPagina = styled.div`
     display: grid;
@@ -14,8 +16,19 @@ const CorpoPagina = styled.div`
     background-color:black;
 `
 const FiltroProdutos = styled.div`
-grid-row: 1/3;
- background-color:yellow;
+    grid-row: 1/3;
+    text-align: center;
+    color:lightgray;
+    div {
+        width: 20vw;
+        height: 60vh;
+        border: 2px solid lightgray;
+        margin: 8rem;
+    }
+    section{
+        font-size:1.3rem;
+
+    }
 `
 
 const ContainerProdutos = styled.div`
@@ -30,7 +43,94 @@ const ContainerProdutos = styled.div`
 `
 
 const ContainerBusca = styled.div`
-background-color:pink;
+    flex-direction: row;
+    justify-items: center;
+    align-items: center;
+    display: grid;
+    grid-template-columns: 1fr 12vw;
+
+   
+ input{
+     width:35vw;
+     height: 4.1vh;
+     border-radius: 1.1rem;
+     color: white;
+     border: 1px solid lightgray;
+     background-color: black;
+     font-size: 1rem;
+     text-align:center;
+    ::placeholder{
+        color:lightgray;
+        font-style: italic;
+        font-size: 1rem;
+        
+    }
+    }
+
+    button{
+        background-color: black;
+        border: none;
+        
+    }
+`
+const CarrinhoBusca = styled.div`
+    border: 2px solid lightgray;
+    justify-self:  flex-start;
+    width: 3.8vw;
+    height: 7vh;
+    text-align: center;
+    display:flex;
+    justify-content: center;
+    align-content: space-around;
+   
+   
+   img{
+       width: 2vw;
+       padding: 0;
+      
+   }
+    
+`
+const ContarProdutos = styled.div`
+    width: 1.2vw;
+    height: 1.2vw;
+    border-radius: 20px;
+    border: 2px solid #f44336;
+    position: absolute;
+    margin: -0.4rem -5rem 0 0;
+    background-color: #f44336;
+    font-weight: bold;
+   
+
+   
+`
+const OrdernarPreço = styled.div`
+    display: flex;
+    justify-self:  flex-start;
+    
+   
+    padding:2%;
+
+   div{
+       border: 1px solid lightgray;
+       width: 3rem;
+       height: 1.5rem;
+   }
+
+   p{
+     margin: 0 2rem;
+     font-size: 1.4rem;
+   }
+
+   select{
+    background-color: black;
+    color: lightgray;
+    width: 10rem;
+    font-size: 1.3rem;
+    text-align: center;
+   }
+
+    
 `
 
 
@@ -114,7 +214,7 @@ export default class ExibeProdutos extends React.Component {
         this.setState({
             valorInputBusca: this.state.onChangeBusca,
             buscando: true,
-            onChangeBusca: "" 
+            onChangeBusca: ""
         })
         console.log("botão buscar", this.state.onChangeBusca)
     }
@@ -124,7 +224,7 @@ export default class ExibeProdutos extends React.Component {
     onKeyDownBusca = (e) => {
         e.key === "Enter" &&
             this.buscarProduto()
-        
+
     }
 
 
@@ -132,15 +232,34 @@ export default class ExibeProdutos extends React.Component {
     render() {
         return (
             <CorpoPagina>
-                <FiltroProdutos >
+                <FiltroProdutos>
                     {/* <Filtro arrayViagens={this.state.arrayViagens} /> */}
+                    <div>
+                        <h1>Filtro</h1>
+                        <section>Buscar por preço</section>
+                    </div>
                 </FiltroProdutos>
                 <ContainerBusca>
-                    <input placeholder={'Encontre seu próximo destino'}
-                        value={this.state.onChangeBusca}
-                        onChange={this.onChangeBuscarProduto}
-                        onKeyDown={this.onKeyDownBusca} />
-                    <button onClick={this.buscarProduto} > Buscar por nome </button>
+                    <div>
+                        <input placeholder={'Encontre seu próximo destino'}
+                            value={this.state.onChangeBusca}
+                            onChange={this.onChangeBuscarProduto}
+                            onKeyDown={this.onKeyDownBusca} />
+                        <button onClick={this.buscarProduto} > <img src={lupadebuscar} alt={'buscar'} /></button>
+                    </div>
+                    <CarrinhoBusca>
+                        <img src={carrinho} alt={'carrinho'} />
+                        <ContarProdutos>
+                            2
+                    </ContarProdutos>
+                    </CarrinhoBusca>
+                    <OrdernarPreço>
+                        <p>Ordenação</p>
+                        <select>
+                            <option>Crescente</option>
+                            <option>Decrescente</option>
+                        </select>
+                    </OrdernarPreço>
 
                 </ContainerBusca>
                 <ContainerProdutos>
