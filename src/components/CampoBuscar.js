@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import {arrayViagens} from './arrayViagens.js'
 
 const CardViagem = styled.div`
     display: grid;
@@ -19,14 +20,11 @@ const CardViagem = styled.div`
         grid-column: 1/3;
         width:20vw;
     }
-
     h1{
         height:100%;
         border-left: 1px solid white;     
-
        
     }
-
     h3 {
         text-align:center;
     }
@@ -34,16 +32,10 @@ const CardViagem = styled.div`
 
 export default class CampoBuscar extends React.Component {
 
-    arrayViagensProps = [...this.props.arrayViagens]
-    // arrayViagensFiltrado = this.arrayViagensProps.filter(viagem => {
-    //     // toLowerCase() coloca tudo em letra minuscula
-    //     if (viagem.nomeProduto.toLowerCase().includes(this.props.valorInputBusca.toLowerCase())) {
-    //         return viagem
-    //     }
-    // })
+    
 
     render() {
-       const arrayViagensFiltrado = this.arrayViagensProps.filter(viagem => {
+       const arrayViagensFiltrado = arrayViagens.filter(viagem => {
             // toLowerCase() coloca tudo em letra minuscula
             if (viagem.nomeProduto.toLowerCase().includes(this.props.valorInputBusca.toLowerCase())) {
                 return viagem
@@ -67,12 +59,3 @@ export default class CampoBuscar extends React.Component {
         )
     }
 }
-
-
-
-
-
-
-
-
-
