@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import {arrayViagens} from './arrayViagens.js'
 // import viagemEspaco from '../img/produtos/viagemEspaco1.svg';
 // import viagemVoltaTerra from '../img/produtos/viagemVoltaTerra2.svg';
 // import viagemMarte from '../img/produtos/viagemMarte3.svg';
@@ -51,7 +52,7 @@ const CardViagem = styled.div`
 export default class Viagens extends React.Component {
     
 
-    mostrarViagens = this.props.arrayViagens.map((viagem) => {
+    mostrarViagens = arrayViagens.map((viagem) => {
         
         return (
             <CardViagem key={viagem.id}>
