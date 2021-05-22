@@ -1,9 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
+import { CorpoPagina, FiltroProdutos, ContainerProdutos, ContainerBusca, CarrinhoBusca, ContarProdutos, OrdernarPreço} from './styled.js';
+
+
 import fundoHeader from '../img/backgroundHeader.svg';
 import viajeParaOEspaco from '../img/viajeParaOEspacoFinal.svg';
 import logo from '../img/logo.svg';
-import { CorpoPagina, FiltroProdutos, ContainerProdutos, ContainerBusca, CarrinhoBusca, ContarProdutos, OrdernarPreço} from './styled.js';
+
 
 const Cabecalho = styled.div`
     background-image: url(${fundoHeader});

@@ -1,18 +1,14 @@
 import React from 'react';
+
+import lupadebuscar from '../img/lupadebuscar.svg';
+import carrinho from '../img/carrinho.svg';
 import Viagens from './Viagens.js';
 /* import Filtro from './Filtro.js'; */
 import CampoBuscar from './CampoBuscar.js';
-import lupadebuscar from '../img/lupadebuscar.svg';
-import carrinho from '../img/carrinho.svg';
 
 import { CorpoPagina, FiltroProdutos, ContainerProdutos, ContainerBusca, CarrinhoBusca, ContarProdutos, OrdernarPreço} from './styled.js';
 
-
-
-
-
 export default class ExibeProdutos extends React.Component {
-
     state = {
         // alterar este state para true exibe a busca por nome
         buscando: false,
