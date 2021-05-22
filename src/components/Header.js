@@ -1,7 +1,10 @@
+
+
 import React from 'react';
 import viajeParaOEspaco from '../img/viajeParaOEspacoFinal.svg';
 import logo from '../img/logo.svg';
 import { Logo, Cabecalho,Slogan} from './styled.js';
+
 
 
 
