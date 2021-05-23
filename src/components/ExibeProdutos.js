@@ -14,20 +14,13 @@ export default class ExibeProdutos extends React.Component {
 
 
     state = {
-        // alterar este state para true exibe a busca por nom
         buscando: false,
-        // este state captura o valor do input
         onChangeBusca: "",
-        // este state é usado no botão de busca para mudar o valor da busca
         valorInputBusca: "",
-
         sort: "",
-
         filtroMinMax: false,
         valorMinimo: "",
-
         valorMaximo: "",
-
         inputFiltroMaximo: "",
         inputFiltroMinimo: "",
 
@@ -78,6 +71,7 @@ export default class ExibeProdutos extends React.Component {
             valorMaximo: this.state.inputFiltroMaximo,
             filtroMinMax: true,
             buscando: false,
+            sort: false,
             inputFiltroMaximo: "",
             inputFiltroMinimo: "",
         })
@@ -176,16 +170,14 @@ export default class ExibeProdutos extends React.Component {
                         <p>Quantidade: {arrayViagens.length}</p>
                         <p>Ordenação</p>
                         <select value={this.state.sort} onChange={this.onChangeSort}>
-                            <option value={""}></option>
+                            <option value={false}></option>
                             <option value={"crescente"}>Crescente</option>
                             <option value={"decrescente"}>Decrescente</option>
                         </select>
-                        </div>
                     </OrdernarPreço>
 
                 </ContainerBusca>
                 <ContainerProdutos>
-
                     {renderizarPagina()}
                 </ContainerProdutos>
             </CorpoPagina>

@@ -16,16 +16,15 @@ const InputContainer = styled.label`
 `
 
 export default class Filters extends React.Component {
-  
-   
+
+
     render() {
-       const arrayViagensFiltrado = arrayViagens.filter(viagem => {
-            if ((this.props.valorMinimo <= viagem.valor)) { 
-                if (this.props.valorMaximo > 0) {
-                    if (this.props.valorMaximo >= viagem.valor) {
-                        return viagem
-                    }
-                }
+        const arrayViagensFiltrado = arrayViagens.filter(viagem => {
+            if (this.props.valorMinimo <= viagem.valor && this.props.valorMaximo >= viagem.valor) {
+                return viagem
+            } else if (this.props.valorMaximo >= viagem.valor) {
+                return viagem
+            } else if (this.props.valorMinimo <= viagem.valor) {
                 return viagem
             }
         })
