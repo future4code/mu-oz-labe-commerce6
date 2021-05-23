@@ -2,7 +2,7 @@ export const arrayViagens = [
     {
         id: 1,
         nomeProduto: "Viagem ao espaço",
-        valor: 26000000.00,
+        valor: 1,
         imagem: require('../img/produtos/viagemEspaco1.svg'),
         descricao: "Conheça um lugar além de tudo que você já viu. Conheça o espaço!",
 
