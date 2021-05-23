@@ -115,7 +115,9 @@ export const ContainerProdutos = styled.div`
     @media (max-width:1000px){
         display:grid;
         grid-template-columns: 1fr 1fr;
+// MAAAAAY Vê ISSO AQUIIIII
         position:relative;
+
         grid-gap: 2rem;
     }
 `

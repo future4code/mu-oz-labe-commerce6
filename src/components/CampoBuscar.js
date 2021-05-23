@@ -1,12 +1,10 @@
 import React from 'react';
-import {arrayViagens} from './arrayViagens.js'
-import { CardViagem} from './styled.js';
+import { arrayViagens } from './arrayViagens.js'
+import { CardViagem } from './styled.js';
 
 export default class CampoBuscar extends React.Component {
-
     render() {
-       const arrayViagensFiltrado = arrayViagens.filter(viagem => {
-            // toLowerCase() coloca tudo em letra minuscula
+        const arrayViagensFiltrado = arrayViagens.filter(viagem => {
             if (viagem.nomeProduto.toLowerCase().includes(this.props.valorInputBusca.toLowerCase())) {
                 return viagem
             }
@@ -16,17 +14,12 @@ export default class CampoBuscar extends React.Component {
                 <CardViagem key={viagem.id}>
                     <img src={viagem.imagem} alt={'Imagem do produto'} />
                     <h3>{viagem.nomeProduto}</h3>
-                    <button> + </button>
-
+                    <h1> + </h1>
                 </CardViagem>
             )
         })
-
         return (
-            <>
-                {exibeBuscaViagens}
-            </>
-
+            <>                {exibeBuscaViagens}            </>
         )
     }
 }
