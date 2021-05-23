@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import lupadebuscar from '../img/lupadebuscar.svg';
 import carrinho from '../img/carrinho.svg';
 
+import fundoHeader from '../img/backgroundHeader.svg';
 export const CorpoPagina = styled.div`
     display: grid;
     min-height:100vh;
@@ -10,20 +11,95 @@ export const CorpoPagina = styled.div`
    
     color:white;
     background-color:black;
+
+    @media (max-width:800px){
+        display:flex;
+        flex-direction: column;
+        position: relative;
+    }
 `
 
+
+export const Cabecalho = styled.div`
+    background-image: url(${fundoHeader});
+    background-repeat: no-repeat;
+    background-size: cover;
+    display:grid;
+    grid-template-columns: 1/3;
+    grid-template-rows: 2fr 8fr;
+    align-items: center;
+    justify-content:center;
+    height: 90vh;
+
+    @media (max-width:800px){
+        height: 60vh;
+    }
+   
+
+`
+export const Slogan = styled.img`
+           
+            
+     @media(max-width:1000px){
+       
+            width: 700px;
+            text-align:center;  
+
+    } 
+
+    @media(max-width:500px){
+        width: 200px;
+    }
+
+    @media(max-width:500px){
+        display:none;
+    }
+
+`
+
+export const Logo = styled.img`
+    justify-self: start;
+    align-self: center;
+    margin-left:-3rem;
+
+    @media(max-width:800px){
+            margin:0;
+            width: 150px;
+            text-align:center;        
+    }
+
+    
+
+`
 export const FiltroProdutos = styled.div`
     grid-row: 1/3;
     text-align: center;
     color:lightgray;
+ 
     div {
         width: 20vw;
         height: 60vh;
         border: 2px solid lightgray;
-        margin: 8rem;
+        margin-top: 10.8rem;
+        margin-left: 4rem;
     }
     section{
-        font-size:1.3rem;
+        font-size:1.2rem;
+    }
+    h1{
+        font-size:1.4rem;
+    }
+    
+    
+    @media (max-width:800px){
+        display:flex;
+        flex-direction: column;
+        position: relative;
+        grid-gap: 2rem;
+        width: auto;
+        height: auto;
+
+
     }
 `
 
@@ -36,13 +112,19 @@ export const ContainerProdutos = styled.div`
     justify-items: center;
     padding-top: 3rem;
     margin: 0 auto;
+
+    @media (max-width:1000px){
+        display:grid;
+        grid-template-columns: 1fr 1fr;
+        grid-gap: 2rem;
+    }
 `
 
 export const CardViagem = styled.div`
     display: grid;
     grid-template-columns: 7fr 2fr;
     grid-template-rows:1fr;
-   
+    box-sizing: content-box;
  
     width: fit-content;
     align-items:center;
@@ -91,7 +173,8 @@ export const ContainerBusca = styled.div`
     align-items: center;
     display: grid;
     grid-template-columns: 1fr 12vw;
-   
+    margin: 2rem 0;
+
  input{
      width:35vw;
      height: 4.1vh;
@@ -145,27 +228,32 @@ export const ContarProdutos = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
+    
    
 `;
 export const OrdernarPreço = styled.div`
     display: flex;
     justify-self:  flex-start;
-   
+    font-size: 1.2rem;
     padding:2%;
-   div{
-       border: 1px solid lightgray;
-       width: 3rem;
-       height: 1.5rem;
+    align-items: center;
+    text-align: center;
+        
+    
+    div{
+      margin: 0 7rem;
+      display: flex;
+      justify-content: space-evenly;
    }
    p{
-    margin: 0 2rem;
-    font-size: 1.4rem;
+    margin: 0 0.8rem;
+    
    }
    select{
     background-color: black;
     color: lightgray;
-    width: 10rem;
-    font-size: 1.3rem;
+    width: auto;
+    height: auto;
     text-align: center;
    }
    `;
