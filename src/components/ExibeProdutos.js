@@ -144,11 +144,13 @@ export default class ExibeProdutos extends React.Component {
                     </ContarProdutos>
                     </CarrinhoBusca>
                     <OrdernarPreço>
+                        <div>
                         <p>Ordenação</p>
                         <select>
                             <option value={"crescente"}>Crescente</option>
                             <option value={"decrescente"}>Decrescente</option>
                         </select>
+                        </div>
                     </OrdernarPreço>
 
                 </ContainerBusca>
