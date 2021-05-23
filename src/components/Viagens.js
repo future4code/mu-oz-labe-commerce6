@@ -1,9 +1,9 @@
 import React from 'react';
-
 import { arrayViagens } from './arrayViagens.js'
 import { CardViagem } from './styled.js';
 
 export default class Viagens extends React.Component {
+
     state = {
         arrayCarrinho:[]
     }
@@ -47,14 +47,15 @@ export default class Viagens extends React.Component {
         console.log("produto adicionado",viagem.nomeProduto)
     }
 
+
     mostrarViagens = arrayViagens.map((viagem) => {
         
         return (
             <CardViagem key={viagem.id}>
                 <img src={viagem.imagem} alt={'Imagem do produto'}/> 
                 <h3>{viagem.nomeProduto}</h3>
-
                 <button id={viagem.id} onClick={() => this.adicionarAoCarrinho(viagem)}> + </button>
+
             </CardViagem>
         )
 

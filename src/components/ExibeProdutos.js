@@ -180,6 +180,7 @@ export default class ExibeProdutos extends React.Component {
                             <option value={"crescente"}>Crescente</option>
                             <option value={"decrescente"}>Decrescente</option>
                         </select>
+                        </div>
                     </OrdernarPreço>
 
                 </ContainerBusca>
