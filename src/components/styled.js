@@ -1,7 +1,4 @@
 import styled from 'styled-components';
-import lupadebuscar from '../img/lupadebuscar.svg';
-import carrinho from '../img/carrinho.svg';
-
 import fundoHeader from '../img/backgroundHeader.svg';
 export const CorpoPagina = styled.div`
     display: grid;
@@ -11,6 +8,20 @@ export const CorpoPagina = styled.div`
    
     color:white;
     background-color:black;
+    
+
+    button{
+        margin: 0 2rem ;
+        text-decoration: none;
+        color: white;
+        background-color: black;
+    }
+
+    h1{
+        font-size: 1.2rem;
+    }
+
+    
 
     @media (max-width:800px){
         display:flex;
@@ -97,13 +108,13 @@ export const FiltroProdutos = styled.div`
         grid-gap: 2rem;
         width: auto;
         height: auto;
-
-
     }
 `
 
 export const ContainerProdutos = styled.div`
     display:grid;
+    grid-column: 2;
+    grid-row: 2;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: repeat(4, 1fr);
     grid-gap: 10rem; 
@@ -115,9 +126,7 @@ export const ContainerProdutos = styled.div`
     @media (max-width:1000px){
         display:grid;
         grid-template-columns: 1fr 1fr;
-// MAAAAAY Vê ISSO AQUIIIII
         position:relative;
-
         grid-gap: 2rem;
     }
 `
@@ -127,7 +136,6 @@ export const CardViagem = styled.div`
     grid-template-columns: 7fr 2fr;
     grid-template-rows:1fr;
     box-sizing: content-box;
- 
     width: fit-content;
     align-items:center;
     border-top: 1px solid;
@@ -135,11 +143,17 @@ export const CardViagem = styled.div`
     border-left: 1px solid;
     border-right: 1px solid;
     padding:0;
+    
     img{
         border:none;
         grid-column: 1/3;
-        width:21vw;
+        width:22vw;
 
+    }
+
+    p{
+        grid-row:2;
+        grid-column: 1;
     }
 
     button{
@@ -163,8 +177,10 @@ export const CardViagem = styled.div`
 
     h3 {
         text-align:center;
-        padding:1rem 0;
+        padding:1.2rem 0.8rem;
         margin:0;
+        display:flex;
+        
     }
 `
 
@@ -258,4 +274,96 @@ export const OrdernarPreço = styled.div`
     height: auto;
     text-align: center;
    }
+
+    button {
+        margin: 0 2rem ;
+        text-decoration: none;
+        color: white;
+        background-color: black;
+    
+    }
    `;
+
+export const ExibeCarrinho = styled.div`
+    display: flex;
+    flex-direction: column;
+   `
+
+
+export const CardViagemCarrinho = styled.div`
+    display: grid;
+    grid-column: 1;
+    grid-template-columns: 15vw 2fr;
+    grid-template-rows:1fr 1fr 1fr;
+    box-sizing: content-box;
+ 
+    width:  47.4vw;
+    height:  28.2vh;
+    align-items:center;
+    border-top: 1px solid;
+    border-bottom: 1px solid;
+    border-left: 1px solid;
+    border-right: 1px solid;
+    padding:0;
+
+    &&::hover{
+       
+
+    }
+
+    img{
+        grid-column: 1;
+        grid-row:1/4;
+        border:none;
+        
+        width: 15vw;
+
+    }
+
+    button{
+        
+        grid-row:3;
+        color: white;
+        background-color: black;
+        height:100%;
+        border: 1px solid white;
+        text-align: center;
+        align-self: center;
+        padding:0;
+        margin:0;
+        font-size: 1.5rem;
+       :active{
+        background-color: red;
+        border: 2px solid white;
+       }
+    }
+
+    h2 {
+        grid-row:1;
+        text-align:center;
+        padding:1rem 0;
+        margin:0;
+        font-size: 1.4rem;
+        text-align:center;
+        letter-spacing:1px;
+        text-transform: uppercase;
+    }
+
+    div{
+        grid-row:2;
+        font-size: 1.2rem;
+        padding:2%;
+        text-align:right;
+    }
+    p{
+        text-align:left;
+        font-size: 1.2rem;
+        color:white;
+        
+    }
+
+
+   
+`
+
+
