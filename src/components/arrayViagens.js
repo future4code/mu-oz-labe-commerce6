@@ -26,7 +26,7 @@ export const arrayViagens = [
         nomeProduto: "Viagem a Vênus",
         valor: 26000000,
         imagem: require('../img/produtos/viagemVenus4.svg'),
-        descricao: "",
+        descricao: "O planeta vermelho, um lugar que não pode ser distinguido em meio aos raios de sol, mas você poderá conhecê-lo de perto.",
     },
 
     {

@@ -1,23 +1,8 @@
-import React from 'react'
-import styled from 'styled-components';
-import { arrayViagens } from './arrayViagens.js'
-import { CardViagem } from './styled.js'
-
-const FiltersContainer = styled.div`
-  border: 1px solid black;
-  padding: 8px;
-`
-
-const InputContainer = styled.label`
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  margin-bottom: 8px;
-`
+import React from 'react';
+import { arrayViagens } from './arrayViagens.js';
+import { CardViagem } from './styled.js';
 
 export default class Filters extends React.Component {
-
-
     render() {
         const arrayViagensFiltrado = arrayViagens.filter(viagem => {
             if (this.props.valorMinimo <= viagem.valor && this.props.valorMaximo >= viagem.valor) {
@@ -33,8 +18,7 @@ export default class Filters extends React.Component {
                 <CardViagem key={viagem.id}>
                     <img src={viagem.imagem} alt={'Imagem do produto'} />
                     <h3>{viagem.nomeProduto}</h3>
-                    <button> + </button>
-
+                    <button id={viagem.id} onClick={() => this.adicionarAoCarrinho(viagem)}> + </button>
                 </CardViagem>
             )
         })

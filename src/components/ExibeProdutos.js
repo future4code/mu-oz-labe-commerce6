@@ -9,10 +9,8 @@ import { CardViagem } from './styled.js';
 import { arrayViagens } from './arrayViagens.js';
 import { CorpoPagina, FiltroProdutos, ContainerProdutos, ContainerBusca, CarrinhoBusca, ContarProdutos, OrdernarPreço } from './styled.js';
 
+
 export default class ExibeProdutos extends React.Component {
-
-
-
     state = {
         buscando: false,
         onChangeBusca: "",
@@ -23,17 +21,16 @@ export default class ExibeProdutos extends React.Component {
         valorMaximo: "",
         inputFiltroMaximo: "",
         inputFiltroMinimo: "",
-
+        verCarrinho: false
     }
 
-    // ---------------------LOGICA POR NOME ------------------------
 
-    // esta função adiciona o valor da busca ao state onChangeBusca
+
     onChangeBuscarProduto = (e) => {
         this.setState({ onChangeBusca: e.target.value })
     }
 
-    // esta função atualiza os states para exibir o campo de busca
+
     buscarProduto = () => {
         this.setState({
             valorInputBusca: this.state.onChangeBusca,
@@ -44,15 +41,12 @@ export default class ExibeProdutos extends React.Component {
         })
     }
 
-    // essa função pega o evento (no caso as teclas clicadas) e caso a tecla seja enter ela executa a mesma função do botão
-    // a sintaxe estranha é o curto circuito, caso cês não lembrem kkk (eu não lembrava tb, fui procurar nas anotações)
     onKeyDownBusca = (e) => {
         e.key === "Enter" &&
             this.buscarProduto()
 
     }
 
-    // ----------------------LOGICA VALOR ------------------------
 
     onChangeMinFiltro = (e) => {
         this.setState({ inputFiltroMinimo: e.target.value })
@@ -84,7 +78,7 @@ export default class ExibeProdutos extends React.Component {
 
     }
 
-    //Lógica de ordenação dos produtos
+
     FiltrarListaOrdenada = () => {
         arrayViagens.sort((a, b) =>
             this.state.sort === 'crescente' ?
@@ -93,8 +87,8 @@ export default class ExibeProdutos extends React.Component {
         return arrayViagens.map((viagem) => {
             return <CardViagem key={viagem.id}>
                 <img src={viagem.imagem} alt={'Imagem do produto'} />
-                <h3>{viagem.nomeProduto}</h3>
-
+                <h3>{viagem.nomeProduto}
+                - R${viagem.valor},00</h3>    
                 <button id={viagem.id} onClick={() => this.adicionarAoCarrinho(viagem)}> + </button>
             </CardViagem>
         })
@@ -108,9 +102,92 @@ export default class ExibeProdutos extends React.Component {
         })
     }
 
+    visualizarCarrinho = () => {
+        this.setState({
+            verCarrinho: true
+
+        })
+       
+    }
+    voltarInicio = () => {
+        this.setState({
+            verCarrinho: false,
+            buscar: false,
+            filtroMinMax: false,
+            sort: false,
+
+        })
+    }
+
+    identificarCarrinho = () => {
+        if (!this.state.verCarrinho) {
+            return (
+                <>
+                    <FiltroProdutos>
+                        <h3>Filtros</h3>
+
+                        <p>Valor mínimo:</p>
+                        <input
+                            placeholder={'Valor Mínino'}
+                            value={this.state.inputFiltroMinimo}
+                            onChange={this.onChangeMinFiltro}
+                            onKeyDown={this.onKeyDownFiltro}
+                        />
+                        <p> Valor máximo:</p>
+                        <input
+                            placeholder={'Valor Máximo'}
+                            value={this.state.inputFiltroMaximo}
+                            onChange={this.onChangeMaxFiltro}
+                            onKeyDown={this.onKeyDownFiltro} />
+                        <br />
+                        <button onClick={this.filtrarProdutos}>Filtrar</button>
+
+                    </FiltroProdutos>
+                    <ContainerBusca>
+                        <div>
+                            <input
+                                placeholder={'Encontre seu próximo destino'}
+                                value={this.state.onChangeBusca}
+                                onChange={this.onChangeBuscarProduto}
+                                onKeyDown={this.onKeyDownBusca} />
+                            <button onClick={this.buscarProduto} >
+                                <img src={lupadebuscar} alt={'buscar'} />
+                            </button>
+                        </div>
+                        <CarrinhoBusca>
+                            <button onClick={this.visualizarCarrinho}> <img src={carrinho} alt={'carrinho'} /> </button>
+                            <ContarProdutos>
+                                0
+                            </ContarProdutos>
+                        </CarrinhoBusca>
+                        <OrdernarPreço>
+                            <p>Quantidade: {arrayViagens.length}</p>
+                            <p>Ordenação</p>
+                            <select value={this.state.sort} onChange={this.onChangeSort}>
+                                <option value={false}></option>
+                                <option value={"crescente"}>Crescente</option>
+                                <option value={"decrescente"}>Decrescente</option>
+                            </select>
+
+                        </OrdernarPreço>
+
+                    </ContainerBusca> </>
+            )
+        } else {
+            return (
+            <>
+                <h1>Carrinho</h1>
+                <button onClick={this.voltarInicio}>Ver todos os produtos</button>
+                <div>Valor total:{this.props.valor}</div>
+                
+
+            </>
+
+)}
+    }
+
     render() {
-        console.log("ValorMáximo:", this.state.valorMaximo)
-        console.log("ValorMinimo:", this.state.valorMinimo)
+       
         const renderizarPagina = () => {
             if (this.state.buscando) {
                 return <CampoBuscar valorInputBusca={this.state.valorInputBusca} />
@@ -121,62 +198,14 @@ export default class ExibeProdutos extends React.Component {
                 return this.FiltrarListaOrdenada()
 
             } else {
-                return <Viagens />
+                return <Viagens verCarrinho={this.state.verCarrinho} />
             }
         }
 
+
         return (
             <CorpoPagina>
-                <FiltroProdutos>
-                    <h3>Filtros</h3>
-
-                    <p>Valor mínimo:</p>
-                    <input
-                        // type="number"
-                        placeholder={'Valor Mínino'}
-                        value={this.state.inputFiltroMinimo}
-                        onChange={this.onChangeMinFiltro}
-                        onKeyDown={this.onKeyDownFiltro}
-                    />
-                    <p> Valor máximo:</p>
-                    <input
-                        // type="number"
-                        placeholder={'Valor Máximo'}
-                        value={this.state.inputFiltroMaximo}
-                        onChange={this.onChangeMaxFiltro}
-                        onKeyDown={this.onKeyDownFiltro} />
-                    <br />
-                    <button onClick={this.filtrarProdutos}>Filtrar</button>
-
-                </FiltroProdutos>
-                <ContainerBusca>
-                    <div>
-                        <input
-                            placeholder={'Encontre seu próximo destino'}
-                            value={this.state.onChangeBusca}
-                            onChange={this.onChangeBuscarProduto}
-                            onKeyDown={this.onKeyDownBusca} />
-                        <button onClick={this.buscarProduto} >
-                            <img src={lupadebuscar} alt={'buscar'} />
-                        </button>
-                    </div>
-                    <CarrinhoBusca>
-                        <img src={carrinho} alt={'carrinho'} />
-                        <ContarProdutos>
-                            2
-                    </ContarProdutos>
-                    </CarrinhoBusca>
-                    <OrdernarPreço>
-                        <p>Quantidade: {arrayViagens.length}</p>
-                        <p>Ordenação</p>
-                        <select value={this.state.sort} onChange={this.onChangeSort}>
-                            <option value={false}></option>
-                            <option value={"crescente"}>Crescente</option>
-                            <option value={"decrescente"}>Decrescente</option>
-                        </select>
-                    </OrdernarPreço>
-
-                </ContainerBusca>
+                {this.identificarCarrinho()}
                 <ContainerProdutos>
                     {renderizarPagina()}
                 </ContainerProdutos>

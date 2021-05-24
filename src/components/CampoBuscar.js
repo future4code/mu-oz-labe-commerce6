@@ -13,8 +13,9 @@ export default class CampoBuscar extends React.Component {
             return (
                 <CardViagem key={viagem.id}>
                     <img src={viagem.imagem} alt={'Imagem do produto'} />
-                    <h3>{viagem.nomeProduto}</h3>
-                    <h1> + </h1>
+                    <h3>{viagem.nomeProduto}
+                    - R${viagem.valor},00</h3>
+                    <button id={viagem.id} onClick={() => this.adicionarAoCarrinho(viagem)}> + </button>
                 </CardViagem>
             )
         })
