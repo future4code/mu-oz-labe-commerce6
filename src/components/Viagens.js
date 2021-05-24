@@ -79,7 +79,7 @@ export default class Viagens extends React.Component {
                             <p>{viagem.quantidade}x
                         R${viagem.valor},00</p>
                         </div>
-                        <button onClick= { this.removerDoCarrinho(viagem)}> Remover Produto </button>
+                        <button> Remover Produto </button>
                     </CardViagemCarrinho>
 
 
